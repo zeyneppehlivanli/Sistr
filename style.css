@@ -1,0 +1,293 @@
+/* --- Sistr - Soft Lila & Premium Vibe --- */
+:root {
+    --bg-color: #F4F2F8;     
+    --card-bg: #FFFFFF;      
+    --primary: #B098EA;      
+    --primary-light: #F0EBFA; 
+    --text-dark: #3A314D;    
+    --text-gray: #82799A;    
+    
+    --shadow-soft: 0 6px 16px rgba(176, 152, 234, 0.12); 
+    --shadow-medium: 0 10px 25px rgba(176, 152, 234, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: 100px; }
+
+/* Üst Menü */
+.app-header { background-color: var(--card-bg); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(176, 152, 234, 0.08); position: sticky; top: 0; z-index: 100; }
+.header-left { display: flex; flex-direction: column; }
+.logo { display: flex; align-items: center; gap: 8px; color: var(--primary); }
+.logo h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+.tagline { font-size: 0.85rem; color: var(--text-gray); font-weight: 600; margin-top: 2px; letter-spacing: 0.5px; }
+.avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light); }
+
+/* YENİ: Merkezi Akış Düzeni (Feed) */
+.feed-container {
+    max-width: 650px; /* Zarif, ince uzun bir akış genişliği */
+    margin: 30px auto; /* Tam ortaya hizalar */
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* YENİ: Zarif Karşılama Kartı */
+.elegant-greeting {
+    background: linear-gradient(to right, #FFFFFF, #FAF8FF);
+    border: 1px solid rgba(176, 152, 234, 0.3);
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(176, 152, 234, 0.05);
+}
+
+.elegant-greeting h2 { font-size: 1.25rem; color: var(--text-dark); font-weight: 700; margin-bottom: 4px; }
+.elegant-greeting p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
+
+/* YENİ: Yatay Kategoriler (Kartların Üstünde) */
+.categories-horizontal {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.categories-horizontal::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+    padding: 8px 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    color: var(--text-gray);
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cat-btn:hover { border-color: var(--primary); color: var(--primary); }
+.cat-btn.active { background-color: var(--primary); color: white; border-color: var(--primary); box-shadow: var(--shadow-soft); }
+
+/* İlan Panosu */
+.board-container { display: flex; flex-direction: column; gap: 20px; }
+.post-card { background-color: var(--card-bg); border-radius: 24px; padding: 1.5rem; box-shadow: var(--shadow-soft); border: 1px solid rgba(176, 152, 234, 0.15); transition: transform 0.2s; }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+
+/* Rozetler ve Yazar */
+.post-author { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #E5E7EB; }
+.author-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light); }
+.author-info { display: flex; flex-direction: column; gap: 3px; }
+.author-name { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); }
+.trust-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; width: fit-content; }
+.badge-gold { background-color: #FEF3C7; color: #B45309; } 
+.badge-blue { background-color: #E0E7FF; color: #3730A3; } 
+.trust-badge .material-icons { font-size: 13px; }
+
+/* Etiketler */
+.tag { font-size: 0.85rem; padding: 6px 14px; border-radius: 20px; font-weight: 600; }
+.tag-study { background-color: #E8F0FE; color: #1967D2; }
+.tag-gym { background-color: #FCE8F3; color: #D81B60; }
+.tag-coffee { background-color: #FEF3C7; color: #92400E; }
+.tag-walk { background-color: #E6F4EA; color: #137333; }
+.sub-tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--primary-light); color: var(--text-gray); font-weight: 600; margin-left: 6px; background-color: transparent; }
+.time { font-size: 0.85rem; color: var(--text-gray); font-weight: 500; }
+.card-title { font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; color: var(--text-dark); }
+.card-desc { font-size: 0.95rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; }
+
+/* Kapasite ve Butonlar */
+.capacity-wrapper { margin-bottom: 18px; background-color: var(--bg-color); padding: 10px 12px; border-radius: 12px; }
+.capacity-text { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); display: flex; justify-content: space-between; margin-bottom: 8px; }
+.capacity-text span:last-child { color: var(--primary); }
+.capacity-bar { width: 100%; height: 6px; background-color: #E2DDF0; border-radius: 10px; overflow: hidden; }
+.capacity-fill { height: 100%; background-color: var(--primary); border-radius: 10px; transition: width 0.5s ease-out; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--primary-light); padding-top: 15px; }
+.location { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; color: var(--text-gray); font-weight: 600; }
+.location .material-icons { font-size: 18px; color: var(--primary); }
+
+.join-btn { padding: 10px 22px; border: none; border-radius: 14px; background-color: var(--primary-light); color: var(--primary); font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.join-btn:hover { background-color: var(--primary); color: white; }
+.join-btn.joined { background-color: #10B981; color: white; pointer-events: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+
+/* FAB Buton */
+.fab-btn { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; border-radius: 50%; background-color: var(--primary); color: white; border: none; box-shadow: var(--shadow-medium); cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.2s; }
+.fab-btn .material-icons { font-size: 32px; }
+
+/* Modal (Form) */
+.hidden { display: none !important; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(58, 49, 77, 0.4); z-index: 1000; display: flex; justify-content: center; align-items: flex-end; }
+.modal-content { background-color: var(--card-bg); width: 100%; max-width: 500px; border-radius: 32px 32px 0 0; padding: 30px; animation: slideUp 0.3s ease-out; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.modal-header h2 { color: var(--text-dark); font-weight: 800; }
+.close-btn { background: none; border: none; font-size: 32px; color: var(--text-gray); cursor: pointer; }
+.input-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 8px; }
+.row-group { display: flex; gap: 15px; }
+.row-group .input-group { flex: 1; }
+label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+input, select, textarea { width: 100%; padding: 14px; border: 2px solid var(--primary-light); border-radius: 16px; font-size: 0.95rem; background-color: var(--bg-color); outline: none; transition: all 0.2s; color: var(--text-dark); }
+input:focus, select:focus, textarea:focus { border-color: var(--primary); background-color: white; }
+.submit-btn { width: 100%; padding: 16px; background-color: var(--primary); color: white; border: none; border-radius: 16px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 15px; box-shadow: var(--shadow-soft); }
+.error-text { color: #DC2626; font-size: 0.8rem; font-weight: 700; margin-top: 6px; animation: shake 0.4s ease-in-out; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } }
+
+/* Toast Bildirimler */
+#toast-container { position: fixed; top: 90px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
+.toast { background-color: var(--card-bg); color: var(--text-dark); padding: 14px 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 0.95rem; animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), fadeOut 0.5s ease-in 2.5s forwards; border-left: 5px solid #10B981; }
+.toast .material-icons { color: #10B981; font-size: 22px; }
+@keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-10px); } }
+/* --- YENİ VİZYON: Estetik "Güvenli Yürüyüş" Modu (Soft Rose) --- */
+.safewalk-trigger {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #FFB3C6, #FF8FA3); /* Zarif gül kurusu geçişi */
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+    transition: all 0.2s;
+}
+
+.safewalk-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 143, 163, 0.5);
+}
+
+/* Acil Durum Kartı (Nefes Alan Animasyon) */
+.safewalk-card {
+    background: linear-gradient(to right, #FFF0F3, #FFFFFF);
+    border: 1px solid #FFCCD5;
+    border-left: 5px solid #FF8FA3; /* Sol tarafta belirgin pembe/rose çizgi */
+    animation: softPulse 2s infinite; /* Estetik nabız animasyonu */
+    order: -1; /* CSS ile her zaman en üstte tutar */
+}
+
+@keyframes softPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 143, 163, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 143, 163, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 143, 163, 0); }
+}
+
+.safewalk-badge {
+    background-color: #FF8FA3;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Acil durum butonunu özel renklendir */
+.safewalk-card .join-btn {
+    background-color: #FF8FA3;
+    color: white;
+}
+.safewalk-card .join-btn:hover {
+    background-color: #FA7089;
+}
+/* --- WOW VİZYON: GUARDIAN MODE (Dijital Koruma) --- */
+.safe-zone-badge {
+    font-size: 0.7rem;
+    background-color: #D1FAE5;
+    color: #065F46;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 700;
+}
+
+/* Guardian Live Check Modal */
+.guardian-modal .modal-content {
+    background: linear-gradient(135deg, #1E1B4B, #312E81); /* Çok koyu, ciddi bir lacivert */
+    color: white;
+    text-align: center;
+    border: 2px solid #6366F1;
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+}
+
+.guardian-modal h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.guardian-modal p {
+    color: #A5B4FC;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.guardian-icon {
+    font-size: 48px;
+    color: #818CF8;
+    animation: pulseShield 2s infinite;
+}
+
+@keyframes pulseShield {
+    0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(129, 140, 248, 0.7)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(129, 140, 248, 0.9)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(129, 140, 248, 0)); }
+}
+
+.guardian-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-safe {
+    flex: 1;
+    background-color: #10B981;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-sos {
+    flex: 1;
+    background-color: #EF4444;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    animation: shake 3s infinite;
+}
+
+.toast.guardian-toast {
+    background-color: #312E81;
+    color: white;
+    border-left: 5px solid #818CF8;
+}
+.toast.guardian-toast .material-icons {
+    color: #818CF8;
+}

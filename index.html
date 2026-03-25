@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistr - Kampüs Kız Kardeşliği</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="material-icons">spa</span>
+                <h1>Sistr</h1>
+            </div>
+            <span class="tagline">Kampüsteki Kız Kardeşlik Ağın</span>
+        </div>
+        <div class="user-profile">
+            <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Lily&backgroundColor=F0EBFA" alt="Profil" class="avatar">
+        </div>
+    </header>
+
+    <div class="feed-container">
+        
+        <div class="elegant-greeting">
+            <h2>Merhaba 🌸</h2>
+            <p>Kampüste yalnız değilsin. İlanlara göz at, planlara katıl veya kendi kız kardeşlik ağını oluştur.</p>
+            
+            <button id="quick-safewalk-btn" class="safewalk-trigger">
+                <span class="material-icons">directions_walk</span>
+                Gece Yürüyüşü İçin Arkadaş Bul (Hemen Çıkıyorum)
+            </button>
+        </div>
+
+        <nav class="categories-horizontal">
+            <button class="cat-btn active" data-filter="all">Tümü</button>
+            <button class="cat-btn" data-filter="coffee">☕ Kahve</button>
+            <button class="cat-btn" data-filter="gym">🏋️‍♀️ Spor</button>
+            <button class="cat-btn" data-filter="study">📚 Ders</button>
+            <button class="cat-btn" data-filter="walk">🚶‍♀️ Yürüyüş</button>
+        </nav>
+
+        <main class="board-container">
+            <div class="post-card">
+                <div class="card-header">
+                    <div>
+                        <span class="tag tag-study">📚 Ders</span>
+                        <span class="sub-tag">Sessiz Çalışma</span>
+                    </div>
+                    <span class="time">24 Mart 15:00</span>
+                </div>
+                
+                <div class="post-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name">Zeynep Y.</span>
+                        <div class="trust-badge badge-gold">
+                            <span class="material-icons">verified</span>
+                            <span>Süper Kız Kardeş (12 Buluşma)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="card-title">Merkez Kütüphanede Vize Kampı</h3>
+                <p class="card-desc">İstatistik çalışacağım, masada 1 kişilik boş yerim var. Odaklanıp hiç konuşmadan soru çözecek birini arıyorum.</p>
+                <div class="capacity-wrapper">
+                    <div class="capacity-text"><span>Katılımcı Durumu</span><span>1 / 2 Kişi</span></div>
+                    <div class="capacity-bar"><div class="capacity-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="card-footer">
+                    <span class="location"><span class="material-icons">place</span> Merkez Kütüphane</span>
+                    <button class="join-btn">Bana Katıl</button>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <div class="card-header">
+                    <div>
+                        <span class="tag tag-gym">🏋️‍♀️ Spor</span>
+                        <span class="sub-tag">Ağırlık & Direnç</span>
+                    </div>
+                    <span class="time">25 Mart 18:30</span>
+                </div>
+                
+                <div class="post-author">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name">Ayşe B.</span>
+                        <div class="trust-badge badge-blue">
+                            <span class="material-icons">fiber_new</span>
+                            <span>Yeni Üye (0 Buluşma)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="card-title">Bacak Günü İçin Antrenman Partneri</h3>
+                <p class="card-desc">Serbest ağırlık bölgesindeyim. Ağırlık takıp çıkarmada yardımlaşacağımız, motivasyonu yüksek bir gym buddy aranıyor!</p>
+                <div class="capacity-wrapper">
+                    <div class="capacity-text"><span>Katılımcı Durumu</span><span>1 / 2 Kişi</span></div>
+                    <div class="capacity-bar"><div class="capacity-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="card-footer">
+                    <span class="location">
+                        <span class="material-icons">place</span> Kampüs İçi 
+                        <span class="safe-zone-badge">🟢 Güvenli Rota</span>
+                    </span>
+                    <button class="join-btn">Bana Katıl</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button class="fab-btn">
+        <span class="material-icons">add</span>
+    </button>
+
+    <div id="new-post-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Yeni Plan Oluştur</h2>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <form id="new-post-form">
+                <div class="input-group">
+                    <label>Üniversite E-Postası <span style="color:var(--text-gray); font-size:0.75rem;">(Sadece .edu.tr)</span></label>
+                    <input type="email" id="post-email" placeholder="ornek@universite.edu.tr" required>
+                    <span id="email-error" class="error-text hidden">Sistr sadece üniversiteli kadınlara özeldir. Lütfen .edu.tr uzantılı mailinizi girin.</span>
+                </div>
+
+                <div class="row-group">
+                    <div class="input-group">
+                        <label>Kategori</label>
+                        <select id="post-category" required>
+                            <option value="coffee">☕ Kahve Molası</option>
+                            <option value="gym">🏋️‍♀️ Spor / Gym</option>
+                            <option value="study">📚 Beraber Çalışma</option>
+                            <option value="walk">🚶‍♀️ Güvenli Yürüyüş</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Detay (Alt Etiket)</label>
+                        <select id="post-subtag" required></select>
+                    </div>
+                </div>
+
+                <div class="row-group">
+                    <div class="input-group">
+                        <label>Başlık</label>
+                        <input type="text" id="post-title" placeholder="Örn: Kütüphanede vize..." required>
+                    </div>
+                    <div class="input-group">
+                        <label>Kontenjan (Sen dahil)</label>
+                        <input type="number" id="post-capacity" min="2" max="10" value="2" required>
+                    </div>
+                </div>
+                
+                <div class="row-group">
+                    <div class="input-group">
+                        <label>Zaman</label>
+                        <input type="datetime-local" id="post-time" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Lokasyon</label>
+                        <input type="text" id="post-location" placeholder="Örn: Merkez Kampüs" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Detaylar & İletişim</label>
+                    <textarea id="post-desc" rows="3" placeholder="Detayları ve iletişim adresini yaz..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Panoya As</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="guardian-check-modal" class="modal guardian-modal hidden">
+        <div class="modal-content">
+            <span class="material-icons guardian-icon">health_and_safety</span>
+            <h2>Güvende misin?</h2>
+            <p>Sistr Guardian aktif. Buluşmanın üzerinden zaman geçti. Her şey yolunda mı?</p>
+            
+            <div class="guardian-buttons">
+                <button id="btn-im-safe" class="btn-safe">
+                    <span class="material-icons">thumb_up</span> İyiyim
+                </button>
+                <button id="btn-sos" class="btn-sos">
+                    <span class="material-icons">emergency</span> SOS (Yardım)
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

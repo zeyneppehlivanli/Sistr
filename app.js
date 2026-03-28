@@ -10,11 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtagSelect = document.getElementById('post-subtag'); 
     const safeWalkBtn = document.getElementById('quick-safewalk-btn');
 
-    // Guardian Butonları
     const btnImSafe = document.getElementById('btn-im-safe');
     const btnSOS = document.getElementById('btn-sos');
 
-    // TOAST FABRİKASI (Guardian Desteği)
     function showToast(message, isGuardian = false) {
         const toastContainer = document.getElementById('toast-container');
         const toast = document.createElement('div');
@@ -54,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
 
-    // FİLTRELEME (Override Zekası)
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -76,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- WOW! VİZYON: GUARDIAN MODE ETKİLEŞİMİ ---
+    // Pano Tıklama İşlemleri (Katılma ve YENİ: SİLME)
     boardContainer.addEventListener('click', (e) => {
+        // 1. Bana Katıl Butonu İşlemi
         if (e.target.classList.contains('join-btn')) {
             const btn = e.target;
             const card = btn.closest('.post-card');
@@ -98,21 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 showToast("Harika! Etkinliğe katıldın.");
                 
-                // 1 Saniye sonra Guardian Modu Devreye Girer
                 setTimeout(() => {
                     showToast("🛡️ Guardian Aktif: Güvenliğin için rotan takip ediliyor.", true);
-                    
-                    // Mülakat Demosu İçin: 4 Saniye Sonra "İyi misin?" ekranı fırlat
                     setTimeout(() => {
                         guardianModal.classList.remove('hidden');
                     }, 4000);
-
                 }, 1000);
             }
         }
+
+        // 2. YENİ: İlanı Sil (Geri Al) Butonu İşlemi
+        if (e.target.closest('.delete-btn')) {
+            const card = e.target.closest('.post-card');
+            // Ekrandan pürüzsüzce kaybolması için hafif bir animasyon
+            card.style.transition = "opacity 0.3s, transform 0.3s";
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.9)";
+            
+            setTimeout(() => {
+                card.remove(); // HTML'den tamamen sil
+                showToast("İlanın panodan başarıyla kaldırıldı.");
+            }, 300);
+        }
     });
 
-    // Guardian Modal Buton İşlemleri
     btnImSafe.addEventListener('click', () => {
         guardianModal.classList.add('hidden');
         showToast("Harika! Guardian arka planda seni korumaya devam ediyor.", true);
@@ -129,11 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.getElementById('close-sos').addEventListener('click', () => {
             guardianModal.classList.add('hidden');
-            location.reload(); // Sistemi sıfırla
+            location.reload(); 
         });
     });
 
-    // Hızlı Güvenli Yürüyüş Kartı Oluşturucu
+    // Hızlı Güvenli Yürüyüş Kartı (SİLME BUTONU EKLENDİ)
     safeWalkBtn.addEventListener('click', () => {
         const now = new Date();
         const timeString = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
@@ -142,7 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
         safeCard.innerHTML = `
             <div class="card-header">
                 <span class="safewalk-badge"><span class="material-icons">campaign</span> ŞİMDİ ÇIKIYOR</span>
-                <span class="time">Bugün, ${timeString}</span>
+                <div class="header-right">
+                    <span class="time">Bugün, ${timeString}</span>
+                    <button class="delete-btn" title="İlanı İptal Et"><span class="material-icons">delete_outline</span></button>
+                </div>
             </div>
             <div class="post-author">
                 <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Lily&backgroundColor=F0EBFA" class="author-avatar">
@@ -166,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast("Güvenli yürüyüş çağrın panonun en üstüne sabitlendi!");
     });
 
-    // Normal Form Gönderme
+    // Normal Form Gönderme (SİLME BUTONU EKLENDİ)
     form.addEventListener('submit', (e) => {
         e.preventDefault(); 
         const emailInput = document.getElementById('post-email').value;
@@ -200,7 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
         newCard.innerHTML = `
             <div class="card-header">
                 <div><span class="tag ${tagClass}">${tagText}</span><span class="sub-tag">${subtag}</span></div>
-                <span class="time">${formattedTime}</span>
+                <div class="header-right">
+                    <span class="time">${formattedTime}</span>
+                    <button class="delete-btn" title="İlanı Geri Al / Sil"><span class="material-icons">delete_outline</span></button>
+                </div>
             </div>
             <div class="post-author">
                 <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Lily&backgroundColor=F0EBFA" class="author-avatar">

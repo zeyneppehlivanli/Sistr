@@ -291,3 +291,32 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); backgr
 .toast.guardian-toast .material-icons {
     color: #818CF8;
 }
+/* --- YENİ: İlanı Sil (Delete) Butonu --- */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #EF4444; /* Kırmızı uyarı rengi */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #FEE2E2; /* Üzerine gelince tatlı bir kırmızı arka plan */
+    transform: scale(1.1);
+}
+
+.delete-btn .material-icons {
+    font-size: 20px;
+}
+
+/* Kartın sağ üst köşesini düzenlemek için küçük bir ayar */
+.header-right {
+    display: flex;
+    align-items: center;
+}

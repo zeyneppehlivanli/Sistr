@@ -8,8 +8,8 @@ Sistr, sıradan bir ilan panosundan ziyade, kendi "karar mekanizması" olan diji
 
 ## Canlı Demo
 - **Yayın Linki:** https://sistr-mu.vercel.app/
-- **Demo Video:** [Loom Video Linkini Buraya Yapıştır]
-
+- **Demo Video:** [Sistr MVP Demo İzle (Loom)](https://www.loom.com/share/3ae18e31d4dd43a48b1851cd36d0df2d)
+- 
 ## Kullanılan Teknolojiler
 - HTML5, CSS3 (Modern UI/UX)
 - Vanilla JavaScript (Kapasite hesaplama, Override Filtreleri, Guardian Timer Algoritmaları)
